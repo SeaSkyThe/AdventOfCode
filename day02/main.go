@@ -64,6 +64,27 @@ func process_game(subsets []map[string]int) bool{
   return true
 }
 
+// part 2
+func get_power(subsets []map[string]int) int{
+  qnt_blue := 0
+  qnt_green := 0
+  qnt_red := 0
+
+  for _, subset := range subsets{
+    if(subset["green"] > qnt_green){
+      qnt_green = subset["green"]
+    }
+    if(subset["red"] > qnt_red){
+      qnt_red = subset["red"]
+    }
+    if(subset["blue"] > qnt_blue){
+      qnt_blue = subset["blue"]
+    }
+  }
+  return qnt_blue*qnt_green*qnt_red 
+}
+
+
 func main() {
 	readFile, err := os.Open("2.txt")
 	if err != nil {
@@ -74,12 +95,16 @@ func main() {
 
 	fileScanner.Split(bufio.ScanLines)
   total := 0
+  // PART 2 variable
+  total_power := 0
 	for fileScanner.Scan() {
 		line := fileScanner.Text()
     game_id, subsets := extract_data(line)
     if process_game(subsets){
       total += game_id
     }
+    total_power += get_power(subsets)
 	}
   fmt.Println("Part 1: ",total)
+  fmt.Println("Part 2: ", total_power)
 }
