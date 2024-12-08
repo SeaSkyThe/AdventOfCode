@@ -33,5 +33,5 @@ defmodule Day01 do
   end
 end
 
-IO.inspect("Dia 1 - Parte 1:  #{Day01.part01("./inputs/part01.txt")}")
-IO.inspect("Dia 1 - Parte 2:  #{Day01.part02("./inputs/part01.txt")}")
+IO.inspect("Dia 1 - Parte 1:  #{Day01.part01("./inputs/day01/part01.txt")}")
+IO.inspect("Dia 1 - Parte 2:  #{Day01.part02("./inputs/day01/part01.txt")}")
